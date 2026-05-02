@@ -2,6 +2,7 @@ import express, { Request, Response, NextFunction } from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import { ENV } from "@/config/env";
+import router from "@/routes";
 
 const app = express();
 
@@ -36,6 +37,9 @@ app.get("/api/sample/test", (req: Request, res: Response) => {
     },
   })
 });
+
+// Actual API Endpoints
+app.use("/api", router);
 
 // 404 Not Found Handler
 app.use((req: Request, res: Response) => {
